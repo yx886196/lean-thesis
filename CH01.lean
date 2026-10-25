@@ -2,16 +2,25 @@ import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.Ring
 
 /-!
-# 第 1 章
+# Chapter 1: Limits of real sequences
 
-占位文件 —— 原项目中此文件为教材正文，此处仅用于验证环境可用。
-
-注意：这里刻意只导入需要的模块（而不是整包 `import Mathlib`），
-这样 VS Code 的 Lean 服务器只需加载几百 MB 而非 6 GB，响应快很多。
-写真实内容时如需更多数学内容，再按需补充 import。
+This file is the formal counterpart of the blueprint in `blueprint/src/content.tex`.
+Every definition and theorem here is referenced from the blueprint with
+`\lean{...}` and marked as formalized with `\leanok`.
 -/
 
-example (x : ℝ) : x + 0 = x := by ring
+/-- A sequence `u : ℕ → ℝ` **converges** to `l` if for every `ε > 0`
+there is `N` such that `|u n - l| ≤ ε` for all `n ≥ N`. -/
+def ConvergesTo (u : ℕ → ℝ) (l : ℝ) : Prop :=
+  ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, |u n - l| ≤ ε
 
+/-- A constant sequence converges to its value. -/
+theorem convergesTo_const (l : ℝ) : ConvergesTo (fun _ => l) l := by
+  intro ε hε
+  refine ⟨0, ?_⟩
+  intro n _
+  simpa using le_of_lt hε
+
+/-- Binomial expansion, used as a toy example of a formalized identity. -/
 theorem ch01_demo (x y : ℝ) : (x + y) ^ 2 = x ^ 2 + 2 * x * y + y ^ 2 := by
   ring

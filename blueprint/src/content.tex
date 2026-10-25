@@ -1,0 +1,43 @@
+% Blueprint content for the thesis demo.
+% Each definition/theorem is bound to a Lean declaration with \lean{...}
+% and marked as formalized with \leanok.
+
+\chapter{Limits of real sequences}
+
+\section{Convergence}
+
+\begin{definition}\label{def:converges}
+  A sequence $(u_n)_{n \in \mathbb{N}}$ of real numbers \emph{converges} to a real
+  number $l$ if
+  \[
+    \forall \varepsilon > 0,\quad \exists N \in \mathbb{N},\quad
+    \forall n \ge N,\quad \lvert u_n - l \rvert \le \varepsilon .
+  \]
+  \lean{ConvergesTo}\leanok
+\end{definition}
+
+\begin{theorem}\label{thm:const}
+  Every constant sequence converges to its value: for every $l \in \mathbb{R}$,
+  the constant sequence $u_n = l$ converges to $l$.
+  \uses{def:converges}
+\end{theorem}
+
+\begin{proof}\lean{convergesTo_const}\leanok
+  Let $\varepsilon > 0$. Choose $N = 0$. For every $n \ge N$ we have
+  \[
+    \lvert u_n - l \rvert = \lvert l - l \rvert = 0 \le \varepsilon .
+  \]
+\end{proof}
+
+\section{An algebraic identity}
+
+\begin{theorem}[Binomial expansion]\label{thm:binomial}
+  For all real numbers $x$ and $y$,
+  \[
+    (x + y)^2 = x^2 + 2xy + y^2 .
+  \]
+\end{theorem}
+
+\begin{proof}\lean{ch01_demo}\leanok
+  Expand the left-hand side and collect terms of the same degree.
+\end{proof}

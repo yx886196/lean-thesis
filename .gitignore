@@ -1,6 +1,19 @@
-﻿.lake/
-__pycache__/
+﻿# Lean build artifacts
+.lake/
 *.olean
 *.ilean
 *.trace
+
+# Blueprint build outputs
+blueprint/web/
+blueprint/print/
+
+# Generated exports
 paper/handout.docx
+paper/handout.pdf
+
+# Logs
+*.log
+
+# Python
+__pycache__/

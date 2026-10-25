@@ -23,3 +23,7 @@ rev = "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f"
 name = "verbose"
 git = "https://github.com/PatrickMassot/verbose-lean4.git"
 rev = "a2f87b133d5b5e1b0b81d4fd7586b8750c08c5db"
+
+[[require]]
+name = "checkdecls"
+git = "https://github.com/PatrickMassot/checkdecls.git"
