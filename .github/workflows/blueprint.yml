@@ -44,7 +44,11 @@ jobs:
           sudo apt-get install -y graphviz
 
       - name: Build blueprint (web)
-        run: leanblueprint web
+        run: |
+          # plastexdepgraph crashes on the Linux runner (TypeError: unhashable type),
+          # so the dependency graph page is generated locally only.
+          sed -i 's/, *dep_graph//' blueprint/src/web.tex
+          leanblueprint web
         env:
           TEXINPUTS: ".:"
 
