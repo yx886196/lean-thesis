@@ -32,6 +32,11 @@ jobs:
       - name: Build Lean project
         run: lake build
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
       - name: Install blueprint tooling
         run: |
           pip install leanblueprint
