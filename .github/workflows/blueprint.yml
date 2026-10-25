@@ -40,6 +40,8 @@ jobs:
 
       - name: Build blueprint (web)
         run: leanblueprint web
+        env:
+          TEXINPUTS: ".:"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
