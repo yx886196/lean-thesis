@@ -17,3 +17,5 @@ paper/handout.pdf
 
 # Python
 __pycache__/
+
+*.paux
